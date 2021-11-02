@@ -1,0 +1,154 @@
+{
+    "platoTipico": [
+        {
+            "nombre": "Cocido Madrileño",
+            "imagen": "img/Cocido_Madrileno.jfif",
+            "ciudad": "Madrid"
+        },
+        {
+            "nombre": "PA AMB TOMÀQUET.",
+            "imagen": "img/barcelona.jfif",
+            "ciudad": "Barcelona"
+        },
+        {
+            "nombre": "Paella valenciana",
+            "imagen": "img/valencia.jpg",
+            "ciudad": "Valencia"
+        },
+        {
+            "nombre": "Cazón aliñado.",
+            "imagen": "img/sevilla.jpeg",
+            "ciudad": "Sevilla"
+        },
+        {
+            "nombre": "Ternasco de Aragón.",
+            "imagen": "img/zaragoza.jpg",
+            "ciudad": "Zaragoza"
+        },
+        {
+            "nombre": "Espetos de sardinas.",
+            "imagen": "img/malaga.jfif",
+            "ciudad": "Málaga"
+        },
+        {
+            "nombre": "Ensalada murciana",
+            "imagen": "img/murcia.jfif",
+            "ciudad": "Murcia"
+        },
+        {
+            "nombre": "TLACOYOS.",
+            "imagen": "img/mexico.jfif",
+            "ciudad": "México D.F."
+        },
+        {
+            "nombre": "barbacoa",
+            "imagen": "img/barbacoa.jpg",
+            "ciudad": "Ecatepec"
+        },
+        {
+            "nombre": "Torta Ahogada",
+            "imagen": "img/torta.jfif",
+            "ciudad": "Guadalajara"
+        },
+        {
+            "nombre": "Mole poblano",
+            "imagen": "img/poblano.jfif",
+            "ciudad": "Puebla"
+        },
+        {
+            "nombre": "Burritos chihuahuenses",
+            "imagen": "img/Burritos.jfif",
+            "ciudad": "Juárez"
+        },
+        {
+            "nombre": "Ensalada César",
+            "imagen": "img/Ensalada.jfif",
+            "ciudad": "Tijuana"
+        },
+        {
+            "nombre": "Guacamaya",
+            "imagen": "img/guacamaya.jfif",
+            "ciudad": "León"
+        },
+        {
+            "nombre": "torta ahogada",
+            "imagen": "img/Zapopan.jfif",
+            "ciudad": "Zapopan"
+        },
+        {
+            "nombre": "Picada",
+            "imagen": "img/1.jpg",
+            "ciudad": "Buenos Aires"
+        },
+        {
+            "nombre": "Salmorejo",
+            "imagen": "img/2.png",
+            "ciudad": "Córdoba"
+        },
+        {
+            "nombre": "parrilla",
+            "imagen": "img/3.jfif",
+            "ciudad": "Rosario"
+        },
+        {
+            "nombre": "Milanesa napolitana",
+            "imagen": "img/4.jpg",
+            "ciudad": "La Plata"
+        },
+        {
+            "nombre": "Calamar en Lo de FranGentileza Lo de Fran.",
+            "imagen": "img/5.jfif",
+            "ciudad": "Mar del Plata"
+        },
+        {
+            "nombre": "empanadas",
+            "imagen": "img/6.jfif",
+            "ciudad": "San Miguel de Tucumán"
+        },
+        {
+            "nombre": "locro",
+            "imagen": "img/7.jfif",
+            "ciudad": "Ciudad de Salta"
+        },
+        {
+            "nombre": "ajiaco",
+            "imagen": "img/c1.jpg",
+            "ciudad": "Bogotá"
+        },
+        {
+            "nombre": "bandeja paisa",
+            "imagen": "img/c2.jfif",
+            "ciudad": "Medellín"
+        },
+        {
+            "nombre": "Sancocho de gallina",
+            "imagen": "img/c3.jfif",
+            "ciudad": "Cali"
+        },
+        {
+            "nombre": "El arroz de lisa",
+            "imagen": "img/c4.jfif",
+            "ciudad": "Barranquilla"
+        },
+        {
+            "nombre": "Plátano frito (platanitos)",
+            "imagen": "img/c5.jfif",
+            "ciudad": "Cartagena"
+        },
+        {
+            "nombre": "pastel de garbanzo",
+            "imagen": "img/c6.jpg",
+            "ciudad": "Cúcuta"
+        },
+        {
+            "nombre": "La butifarra soledeña",
+            "imagen": "img/c7.jfif",
+            "ciudad": "Soledad"
+        },
+        {
+            "nombre": "Lechona Tolimense.",
+            "imagen": "img/c8.jfif",
+            "ciudad": "Ibagué"
+        }
+    ]
+}

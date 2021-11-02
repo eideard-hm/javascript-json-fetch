@@ -75,29 +75,24 @@ const resultCountrySelected = async (e) => {
                 <td>${result["capital"]}</td>
                 <td>${result["textoCapital"]}</td>
                 <td>
-                    <ul>
+                    <ul class="ul">
                          ${result.ciudadImportante
                            .map(
                              (city) =>
                                `<li><a href="https://www.google.com/search?q=${city}" target="_blank">${city}</a></li>
-                               ${platosTipicos().then((platoTipico) => {
-                                 platoTipico
-                                   .map((plato) => {
-                                     if (city === plato.ciudad) {
-                                       `<li>Hola</li>`;
-                                     }
-                                   })
-                                   .join("");
-                               })}
-                              }  
+                              ${platosTipicos(city)
+                                .then((platoTipico) => {
+                                  document.querySelector(
+                                    ".ul"
+                                  ).innerHTML += platoTipico;
+                                })
+                                .catch((error) => {
+                                  console.log(error);
+                                })}
                                `
                            )
-                           .join("")
-                          }
+                           .join("")}
                     </ul>
-                </td>
-                <td>
-                  
                 </td>
             </tr>
         `;
@@ -112,15 +107,23 @@ const resultCountrySelected = async (e) => {
   }
 };
 
-const platosTipicos = async () => {
+const platosTipicos = async (city) => {
   const url = "platosPaises.json";
   try {
     const req = await fetch(url);
     const { platoTipico } = await req.json();
-    return platoTipico;
+    const plato = platoTipico
+      .map((plato) => {
+        if (plato.ciudad === city) {
+          return `<img src="${plato.imagen}" alt="${plato.nombre}" width="100" height="100" />`;
+        }
+      })
+      .join("");
+    return plato;
   } catch (error) {
     console.log(error);
   }
 };
+
 selectListPaises.addEventListener("input", resultCountrySelected);
 // selectListPaises.addEventListener("input", resultCountrySelected);
