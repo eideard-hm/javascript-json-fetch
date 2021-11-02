@@ -7,6 +7,15 @@ const tableResult = document.querySelector("#table-result");
 document.addEventListener("DOMContentLoaded", async () => {
   await loadListPaises();
   tableResult.style.display = "none";
+  if (selectListPaises.value === "") {
+    alertErrorEmpty.innerHTML = `
+      <div class="alert alert-info" role="alert">
+          No se ha seleccionado un pais.
+      </div>
+    `;
+  } else {
+    alertErrorEmpty.innerHTML = "";
+  }
 });
 
 const loadListPaises = async () => {
@@ -17,7 +26,8 @@ const loadListPaises = async () => {
     const {
       listadoPaises: { pais },
     } = await req.json();
-    selectListPaises.innerHTML = "";
+    selectListPaises.innerHTML =
+      '<option value="" disabled selected>-- Seleccione un país --</option>';
     pais.forEach((pais) => {
       selectListPaises.innerHTML += `
                 <option value="${pais["nombre"]}">${pais["nombre"]}</option>
@@ -29,6 +39,15 @@ const loadListPaises = async () => {
 };
 
 const resultCountrySelected = async (e) => {
+  if (selectListPaises.value === "") {
+    alertErrorEmpty.innerHTML = `
+      <div class="alert alert-info" role="alert">
+          No se ha seleccionado un pais.
+      </div>
+    `;
+  } else {
+    alertErrorEmpty.innerHTML = "";
+  }
   const url = "listadoPaises.json";
   const paisSelected = e.target.value;
   if (paisSelected === null || paisSelected.trim() === "") {
@@ -57,9 +76,12 @@ const resultCountrySelected = async (e) => {
                 <td>${result["textoCapital"]}</td>
                 <td>
                     <ul>
-                         ${result.ciudadImportante.map(
-                           (city) => `<li>${city}</li>`
-                         ).join('')}
+                         ${result.ciudadImportante
+                           .map(
+                             (city) =>
+                               `<li><a href="https://en.wikipedia.org/wiki/${city}" target="_blank">${city}</a></li>`
+                           )
+                           .join("")}
                     </ul>
                 </td>
             </tr>
