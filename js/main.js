@@ -70,7 +70,7 @@ const resultCountrySelected = async (e) => {
          `;
         tableResult.style.display = "block";
         bodyTableResult.innerHTML += `
-             <tr>
+            <tr>
                 <th>${result["nombre"]}</th>
                 <td>${result["capital"]}</td>
                 <td>${result["textoCapital"]}</td>
@@ -79,10 +79,25 @@ const resultCountrySelected = async (e) => {
                          ${result.ciudadImportante
                            .map(
                              (city) =>
-                               `<li><a href="https://en.wikipedia.org/wiki/${city}" target="_blank">${city}</a></li>`
+                               `<li><a href="https://www.google.com/search?q=${city}" target="_blank">${city}</a></li>
+                               ${platosTipicos().then((platoTipico) => {
+                                 platoTipico
+                                   .map((plato) => {
+                                     if (city === plato.ciudad) {
+                                       `<li>Hola</li>`;
+                                     }
+                                   })
+                                   .join("");
+                               })}
+                              }  
+                               `
                            )
-                           .join("")}
+                           .join("")
+                          }
                     </ul>
+                </td>
+                <td>
+                  
                 </td>
             </tr>
         `;
@@ -97,4 +112,15 @@ const resultCountrySelected = async (e) => {
   }
 };
 
+const platosTipicos = async () => {
+  const url = "platosPaises.json";
+  try {
+    const req = await fetch(url);
+    const { platoTipico } = await req.json();
+    return platoTipico;
+  } catch (error) {
+    console.log(error);
+  }
+};
 selectListPaises.addEventListener("input", resultCountrySelected);
+// selectListPaises.addEventListener("input", resultCountrySelected);
