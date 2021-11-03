@@ -84,7 +84,7 @@ const resultCountrySelected = async (e) => {
                                 .then((platoTipico) => {
                                   document.querySelector(
                                     ".ul"
-                                  ).innerHTML += platoTipico;
+                                  ).innerHTML += `<li>${platoTipico}</li>`;
                                 })
                                 .catch((error) => {
                                   console.log(error);
