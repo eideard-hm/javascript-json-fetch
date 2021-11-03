@@ -4,6 +4,8 @@ const pResult = document.querySelector("#p-result");
 const alertErrorEmpty = document.querySelector("#alert-error");
 const tableResult = document.querySelector("#table-result");
 
+let arrPlatos = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
   await loadListPaises();
   tableResult.style.display = "none";
