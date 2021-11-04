@@ -2,6 +2,11 @@ li{
     list-style: square;
 }
 
+.plato-nombre{
+    list-style: outside;
+    color: brown
+};
+
 a{
     /* text-decoration: none; */
     color: #fff;

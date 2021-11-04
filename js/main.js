@@ -4,7 +4,7 @@ const pResult = document.querySelector("#p-result");
 const alertErrorEmpty = document.querySelector("#alert-error");
 const tableResult = document.querySelector("#table-result");
 
-let arrPlatos = [];
+let ciudades = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
   await loadListPaises();
@@ -50,8 +50,11 @@ const resultCountrySelected = async (e) => {
   } else {
     alertErrorEmpty.innerHTML = "";
   }
+
   const url = "listadoPaises.json";
+  const urlPlatosPaises = "platosPaises.json";
   const paisSelected = e.target.value;
+
   if (paisSelected === null || paisSelected.trim() === "") {
     alertErrorEmpty.innerHTML = `
             <div class="alert alert-danger" role="alert">
@@ -64,7 +67,12 @@ const resultCountrySelected = async (e) => {
       const {
         listadoPaises: { pais },
       } = await req.json();
+
+      const reqCiudades = await fetch(urlPlatosPaises);
+      const { platoTipico } = await reqCiudades.json();
+
       const result = pais.find((pais) => pais.nombre === paisSelected);
+      ciudades = result.ciudadImportante;
       if (result !== null || result !== "") {
         bodyTableResult.innerHTML = "";
         pResult.innerHTML = `
@@ -82,15 +90,15 @@ const resultCountrySelected = async (e) => {
                            .map(
                              (city) =>
                                `<li><a href="https://www.google.com/search?q=${city}" target="_blank">${city}</a></li>
-                              ${platosTipicos(city)
-                                .then((platoTipico) => {
-                                  document.querySelector(
-                                    ".ul"
-                                  ).innerHTML += `<li>${platoTipico}</li>`;
-                                })
-                                .catch((error) => {
-                                  console.log(error);
-                                })}
+                               ${platoTipico.map((plato) => {
+                                 if (plato.ciudad === city) {
+                                   return `
+                                   <img src="${plato.imagen}" alt="${plato.nombre}" width="100" height="100" />
+                                   <br>
+                                   <li class="plato-nombre">${plato.nombre}</li>
+                                   `;
+                                 }
+                               }).join("")}
                                `
                            )
                            .join("")}
@@ -109,21 +117,24 @@ const resultCountrySelected = async (e) => {
   }
 };
 
-const platosTipicos = async (city) => {
+const platosTipicos = () => {
   const url = "platosPaises.json";
-  try {
-    const req = await fetch(url);
-    const { platoTipico } = await req.json();
-    const plato = platoTipico
-      .map((plato) => {
-        if (plato.ciudad === city) {
-          return `<img src="${plato.imagen}" alt="${plato.nombre}" width="100" height="100" />`;
-        }
-      })
-      .join("");
-    return plato;
-  } catch (error) {
-    console.log(error);
+  return fetch(url);
+};
+
+const exec = () => {
+  if (ciudades.length > 0) {
+    ciudades.forEach((city) => {
+      platosTipicos().then((res) => {
+        res.json().then(({ platoTipico }) => {
+          platoTipico.map((plato) => {
+            if (plato.ciudad === city) {
+              return `<img src="${plato.imagen}" alt="${plato.nombre}" width="100" height="100" />`;
+            }
+          });
+        });
+      });
+    });
   }
 };
 
